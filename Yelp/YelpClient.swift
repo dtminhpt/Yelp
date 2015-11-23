@@ -13,6 +13,8 @@ let yelpConsumerKey = "vxKwwcR_NMQ7WaEiQBK_CA"
 let yelpConsumerSecret = "33QCvh5bIF5jIHR5klQr7RtBDhQ"
 let yelpToken = "uRcRswHFYa1VkDrGV6LAW2F8clGh5JHV"
 let yelpTokenSecret = "mqtKIxMIR4iBtBPZCmCLEb-Dz3Y"
+var businesses = [Business]()
+var array: [NSDictionary]!
 
 enum YelpSortMode: Int {
     case BestMatched = 0, Distance, HighestRated
@@ -21,6 +23,7 @@ enum YelpSortMode: Int {
 class YelpClient: BDBOAuth1RequestOperationManager {
     var accessToken: String!
     var accessSecret: String!
+    
     
     class var sharedInstance : YelpClient {
         struct Static {
@@ -52,6 +55,8 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         return searchWithTerm(term, sort: nil, categories: nil, deals: nil, completion: completion)
     }
     
+
+    
     func searchWithTerm(term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, completion: ([Business]!, NSError!) -> Void) -> AFHTTPRequestOperation {
         // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
 
@@ -81,4 +86,13 @@ class YelpClient: BDBOAuth1RequestOperationManager {
                 completion(nil, error)
         })!
     }
-}
+    
+    
+    
+    
+    
+    
+   }
+
+
+
